@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  house: one
+  team: one
+  position: one
+
+two:
+  name: MyString
+  house: two
+  team: two
+  position: two
