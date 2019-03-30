@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :characters, only: [:index, :show, :create]
       resources :users, only: [:index, :show]
       resources :teams, only: [:index, :show]
-      resources :positions, only: [:index, :show]
+      resources :positions, only: [:index, :show, :create]
       resources :houses, only: [:index, :show, :create]
     end
   end

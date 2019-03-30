@@ -12,15 +12,18 @@ class Api::V1::PositionsController < ApplicationController
 
   def create
     @position = Position.new(position_params)
-    byebug
     if @position.save
-      render json: @position, status: :created, location: @position
+      render json: @position, status: :created, location: api_v1_position_url(@position)
     else
-      render json: @user.errors, status: unprocessable_entity
+      render json: @position.errors, status: unprocessable_entity
     end
   end
 
   private
+
+  def position_params
+    params.permit(:name)
+  end
 
   def find_position
     @position = Position.find(params[:id])
