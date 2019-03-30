@@ -7,9 +7,12 @@ class Api::V1::HousesController < ApplicationController
   end
 
   def create
-    @house = House.create(house_params)
-    # bye bug
-    render json: @house
+    @house = House.new(house_params)
+    if @house.save
+      render json: @house, status: :created, location: api_v1_house_url(@house)
+    else
+      render json: @house.errors, status: :unprocessable_entity
+    end
   end
 
   def show
