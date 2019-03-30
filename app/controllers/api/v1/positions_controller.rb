@@ -4,4 +4,5 @@ class Api::V1::PositionsController < ApplicationController
     @positions = Position.all
     render json: @positions
   end
+
 end
