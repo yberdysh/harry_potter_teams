@@ -10,6 +10,16 @@ class Api::V1::PositionsController < ApplicationController
     render json: @position
   end
 
+  def create
+    @position = Position.new(position_params)
+    byebug
+    if @position.save
+      render json: @position, status: :created, location: @position
+    else
+      render json: @user.errors, status: unprocessable_entity
+    end
+  end
+
   private
 
   def find_position

@@ -7,8 +7,8 @@ class Api::V1::HousesController < ApplicationController
   end
 
   def create
-    byebug
     @house = House.create(house_params)
+    # bye bug
     render json: @house
   end
 
