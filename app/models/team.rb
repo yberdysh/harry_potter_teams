@@ -1,6 +1,7 @@
 class Team < ApplicationRecord
   belongs_to :user
   has_many :characters
+  validates_presence_of :name, :house_id
   before_destroy :remove_chars
 
   private
