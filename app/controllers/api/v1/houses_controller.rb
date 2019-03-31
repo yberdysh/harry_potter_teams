@@ -1,5 +1,5 @@
 class Api::V1::HousesController < ApplicationController
-  before_action :find_house, only: [:show]
+  before_action :find_house, only: [:show, :update, :destroy]
 
   def index
     @houses = House.all
@@ -17,6 +17,18 @@ class Api::V1::HousesController < ApplicationController
 
   def show
     render json: @house
+  end
+
+  def update
+    if @house.update(house_params)
+      render json: @house
+    else
+      render json: @house.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @house.destroy
   end
 
   private

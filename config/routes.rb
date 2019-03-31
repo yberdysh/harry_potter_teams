@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show, :create]
       resources :teams, only: [:index, :show, :create, :destroy, :update]
       resources :positions, only: [:index, :show, :create]
-      resources :houses, only: [:index, :show, :create]
+      resources :houses, only: [:index, :show, :create, :destroy, :update]
     end
   end
 end
