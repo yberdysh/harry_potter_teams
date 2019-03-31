@@ -1,5 +1,5 @@
 class Api::V1::CharactersController < ApplicationController
-  before_action :find_character, only: [:show]
+  before_action :find_character, only: [:show, :destroy, :update]
 
   def index
     @characters = Character.all
@@ -17,6 +17,18 @@ class Api::V1::CharactersController < ApplicationController
     else
       render json: @character.errors, status: :unprocessable_entity
     end
+  end
+
+  def update
+    if @character.update(character_params)
+      render json: @character
+    else
+      render json: @character.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @character.destroy
   end
 
   private
