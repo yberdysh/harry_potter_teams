@@ -1,5 +1,5 @@
 class Api::V1::TeamsController < ApplicationController
-  before_action :find_team, only: [:show, :destroy]
+  before_action :find_team, only: [:show, :update, :destroy]
   def index
     @teams = Team.all
     render json: @teams
@@ -13,6 +13,14 @@ class Api::V1::TeamsController < ApplicationController
     @team = Team.new(team_params)
     if @team.save
       render json: @team, status: :created, location: api_v1_team_url(@team)
+    else
+      render json: @team.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @team.update(team_params)
+      render json: @team
     else
       render json: @team.errors, status: :unprocessable_entity
     end
