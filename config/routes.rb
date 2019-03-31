@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :characters, only: [:index, :show, :create]
       resources :users, only: [:index, :show, :create]
-      resources :teams, only: [:index, :show, :create]
+      resources :teams, only: [:index, :show, :create, :destroy]
       resources :positions, only: [:index, :show, :create]
       resources :houses, only: [:index, :show, :create]
     end
